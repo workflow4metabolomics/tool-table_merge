@@ -30,6 +30,22 @@
     <data name="combined_out" label="Combined_${Metadata_in.name}" format="tabular" ></data>
   </outputs>
   
+  <tests>
+	<test>
+      <param name="dataMatrix_in" value="input_TM12_dataMatrix.txt"/>
+      <param name="Metadata_in" value="input_TM1_variableMetadata.txt"/>
+      <param name="metatype" value="variable"/>
+      <output name="combined_out" file="output_TM1_expected.txt"/>
+	</test>
+	<test>
+      <param name="dataMatrix_in" value="input_TM12_dataMatrix.txt"/>
+      <param name="Metadata_in" value="input_TM2_sampleMetadata.txt"/>
+      <param name="metatype" value="sample"/>
+      <output name="combined_out" file="output_TM2_expected.txt"/>
+	</test>
+  </tests>
+  
+  
   <help>
 
 .. class:: infomark
