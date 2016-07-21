@@ -1,5 +1,9 @@
 <tool id="tablemerge" name="Table Merge" version="2016.03.03">
   <description>Merging dataMatrix with a metadata table</description>
+  <requirements>
+        <requirement type="package" version="3.1.2">R</requirement>
+	    <requirement type="package" version="1.1_4">r-batch</requirement>
+  </requirements>
   <command interpreter="Rscript">
 	tablemerge_wrap.R
       dataMatrix_in "$dataMatrix_in"
@@ -25,6 +29,22 @@
   <outputs>
     <data name="combined_out" label="Combined_${Metadata_in.name}" format="tabular" ></data>
   </outputs>
+  
+  <tests>
+	<test>
+      <param name="dataMatrix_in" value="input_TM12_dataMatrix.txt"/>
+      <param name="Metadata_in" value="input_TM1_variableMetadata.txt"/>
+      <param name="metatype" value="variable"/>
+      <output name="combined_out" file="output_TM1_expected.txt"/>
+	</test>
+	<test>
+      <param name="dataMatrix_in" value="input_TM12_dataMatrix.txt"/>
+      <param name="Metadata_in" value="input_TM2_sampleMetadata.txt"/>
+      <param name="metatype" value="sample"/>
+      <output name="combined_out" file="output_TM2_expected.txt"/>
+	</test>
+  </tests>
+  
   
   <help>
 
