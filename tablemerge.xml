@@ -37,12 +37,12 @@
       <param name="metatype" value="variable"/>
       <output name="combined_out" file="output_TM1_expected.tabular"/>
 	</test>
-	<!--<test>
+	<test>
       <param name="dataMatrix_in" value="input_TM12_dataMatrix.txt"/>
       <param name="Metadata_in" value="input_TM2_sampleMetadata.txt"/>
       <param name="metatype" value="sample"/>
-      <output name="combined_out" file="output_TM2_expected.txt"/>
-	</test>-->
+      <output name="combined_out" file="output_TM2_expected.tabular"/>
+	</test>
   </tests>
   
   
