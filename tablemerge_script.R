@@ -36,7 +36,7 @@ tab.merge <- function(DM.name,meta.name,metype,output){
 # Input --------------------------------------------------------------
 
 DM <- read.table(DM.name,header=TRUE,sep="\t",check.names=FALSE)
-meta <- read.table(meta.name,header=TRUE,sep="\t",check.names=FALSE)
+meta <- read.table(meta.name,header=TRUE,sep="\t",check.names=FALSE,colClasses="character")
 
 # Table match check 
 table.check <- match2(DM,meta,metype)
@@ -54,7 +54,7 @@ if(metype=="sample"){
   rownames(DM) <- DM[,1]
   DM <- DM[,-1]
   DM <- t(DM)
-  DM <- data.frame(sample=row.names(DM),DM)
+  DM <- data.frame(sample=row.names(DM),DM,check.names=FALSE)
   rownames(DM) <- NULL
 }
 
