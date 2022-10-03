@@ -7,7 +7,8 @@
 # User: Galaxy                                                                                 #
 # Original data: used with tablemerge_script.R                                                 #
 # Starting date: 11-05-2015                                                                    #
-# V-1: Firt version of wrapper                                                                 #
+# V-1: First version of wrapper 
+# V-1.1: r-batch removal
 #                                                                                              #
 #                                                                                              #
 # Input files: dataMatrix ; Metadata file                                                      #
@@ -15,9 +16,20 @@
 #                                                                                              #
 ################################################################################################
 
+#batch package replacement
+parse_args <- function() {
+  args <- commandArgs()
+  start <- which(args == "--args")[1] + 1
+  if (is.na(start)) {
+    return(list())
+  }
+  seq_by2 <- seq(start, length(args), by = 2)
+  result <- as.list(args[seq_by2 + 1])
+  names(result) <- args[seq_by2]
+  return(result)
+}
 
-library(batch) #necessary for parseCommandArgs function
-args = parseCommandArgs(evaluate=FALSE) #interpretation of arguments given in command line as an R list of objects
+args <- parse_args()
 
 source_local <- function(...){
 	argv <- commandArgs(trailingOnly = FALSE)
